@@ -21,16 +21,17 @@ local aliens = {}
   
   function love.draw()
     for index = 1, #aliens do
-      love.graphics.draw(aliens[index].image[math.floor(aliens[index].frame)], aliens[index].x, aliens[index].y)
-
-
-      love.graphics.print(aliens[index].frame, 75, 150)
-      love.graphics.print(aliens[1].y, 175, 250)
-      love.graphics.print("speed "..aliens[1].speed, 275, 100)
-      love.graphics.print("x "..aliens[1].x, 50, 300)
+      local sens = 1
+      local a = aliens[index]
+      if a.trajectoire == 2 then
+        sens = -1
+      end
+      love.graphics.draw(a.image[math.floor(a.frame)], a.x, a.y, 0, sens, 1, a.largeur/2)
+      love.graphics.print("x "..aliens[1].x)
+      love.graphics.print("position arrivé "..love.graphics.getWidth(), 0, 50)
+      love.graphics.print("Trajectoire"..aliens[1].trajectoire, 0, 90)
     end
   end
-
 
    function love.keypressed(key)
     if key == "escape" then
