@@ -66,11 +66,3 @@ function WalkALien(aliens, dt)
     end
 end
 
-
-function AlienOnStartingBlock(aliens)
-    for index =1, #aliens do 
-        local alien = aliens[index]
-        alien.y = alien.y + alien.hauteur
-    end
-    return aliens
-end
